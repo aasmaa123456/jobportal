@@ -1,0 +1,251 @@
+{
+    "info": {
+        "_postman_id": "0d7d2af7-f2c1-44f0-8594-262f766f02bd",
+        "name": "Job Portal API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "Register",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "name",
+                                    "value": "Test Recruiter",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "recruiter@test.com",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "123456",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "http://localhost:3000/register",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "register"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Login",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "email",
+                                    "value": "recruiter@test.com",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "123456",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "http://localhost:3000/login",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "login"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Logout",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/logout",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "logout"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Jobs",
+            "item": [
+                {
+                    "name": "Get All Jobs",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/jobs",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "jobs"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Job",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "category",
+                                    "value": "Tech",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "designation",
+                                    "value": "SDE",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "location",
+                                    "value": "Remote",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "companyName",
+                                    "value": "Google",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "salary",
+                                    "value": "120000",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "positions",
+                                    "value": "5",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "skills",
+                                    "value": "React",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "skills",
+                                    "value": "NodeJs",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "dueDate",
+                                    "value": "2026-12-31",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "http://localhost:3000/jobs",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "jobs"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Job Details",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/jobs/:id",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "jobs",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "JOB_ID_HERE"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Search Jobs",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3000/jobs/search?q=Google",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "jobs",
+                                "search"
+                            ],
+                            "query": [
+                                {
+                                    "key": "q",
+                                    "value": "Google"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ]
+}

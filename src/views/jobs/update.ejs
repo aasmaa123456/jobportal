@@ -1,0 +1,86 @@
+<%- include('../partials/header') %>
+
+    <div class="container">
+        <div class="card" style="max-width: 800px; margin: 2rem auto;">
+            <h2 style="margin-bottom: 1.5rem; color: var(--primary-color);">Update Job</h2>
+
+            <% if (errorMessage) { %>
+                <div class="alert alert-danger">
+                    <%= errorMessage %>
+                </div>
+                <% } %>
+
+                    <form action="/jobs/<%= job.id %>/update" method="POST">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div class="form-group">
+                                <label class="form-label">Job Category</label>
+                                <select name="category" class="form-control" required>
+                                    <option value="">Select Category</option>
+                                    <option value="Tech" <%=job.category==='Tech' ? 'selected' : '' %>>Tech</option>
+                                    <option value="Non-Tech" <%=job.category==='Non-Tech' ? 'selected' : '' %>>Non-Tech
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Designation</label>
+                                <input type="text" name="designation" class="form-control"
+                                    value="<%= job.designation %>" required>
+                            </div>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div class="form-group">
+                                <label class="form-label">Job Location</label>
+                                <input type="text" name="location" class="form-control" value="<%= job.location %>"
+                                    required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Company Name</label>
+                                <input type="text" name="companyName" class="form-control"
+                                    value="<%= job.companyName %>" required>
+                            </div>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div class="form-group">
+                                <label class="form-label">Salary</label>
+                                <input type="text" name="salary" class="form-control" value="<%= job.salary %>"
+                                    required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Total Positions</label>
+                                <input type="number" name="positions" class="form-control" value="<%= job.positions %>"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Skills Required (Select multiple)</label>
+                            <select name="skills" class="form-control" multiple required style="height: 100px;">
+                                <option value="React" <%=job.skills.includes('React') ? 'selected' : '' %>>React
+                                </option>
+                                <option value="NodeJs" <%=job.skills.includes('NodeJs') ? 'selected' : '' %>>NodeJs
+                                </option>
+                                <option value="Angular" <%=job.skills.includes('Angular') ? 'selected' : '' %>>Angular
+                                </option>
+                                <option value="MongoDB" <%=job.skills.includes('MongoDB') ? 'selected' : '' %>>MongoDB
+                                </option>
+                                <option value="SQL" <%=job.skills.includes('SQL') ? 'selected' : '' %>>SQL</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Apply By</label>
+                            <input type="date" name="dueDate" class="form-control" value="<%= job.dueDate %>" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Update Job</button>
+                        <a href="/jobs/<%= job.id %>" class="btn btn-secondary">Cancel</a>
+                    </form>
+        </div>
+    </div>
+
+    <%- include('../partials/footer') %>

@@ -1,0 +1,19 @@
+<%- include('partials/header') %>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Find Your Dream Job Today</h1>
+            <p>Connect with top employers and discover opportunities that match your skills.</p>
+            <div class="hero-actions">
+                <a href="/jobs" class="btn btn-primary btn-lg">Browse Jobs</a>
+                <% if (!user) { %>
+                    <a href="/register" class="btn btn-outline btn-lg">Join as Recruiter</a>
+                    <% } %>
+            </div>
+        </div>
+        <div class="hero-image">
+            <!-- Placeholder for hero image if needed, or CSS background -->
+        </div>
+    </section>
+
+    <%- include('partials/footer') %>

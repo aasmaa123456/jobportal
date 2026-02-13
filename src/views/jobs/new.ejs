@@ -1,0 +1,90 @@
+<%- include('../partials/header') %>
+
+    <div class="container">
+        <div class="card" style="max-width: 800px; margin: 2rem auto;">
+            <h2 style="margin-bottom: 1.5rem; color: var(--primary-color);">Post a New Job</h2>
+
+            <% if (errorMessage) { %>
+                <div class="alert alert-danger">
+                    <%= errorMessage %>
+                </div>
+                <% } %>
+
+                    <form action="/jobs" method="POST">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <!-- Category Select -->
+                            <div class="form-group">
+                                <label class="form-label">Job Category</label>
+                                <select name="category" class="form-control" required>
+                                    <option value="">Select Category</option>
+                                    <option value="Tech" <%=oldInput.category==='Tech' ? 'selected' : '' %>>Tech
+                                    </option>
+                                    <option value="Non-Tech" <%=oldInput.category==='Non-Tech' ? 'selected' : '' %>
+                                        >Non-Tech</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Designation</label>
+                                <input type="text" name="designation" class="form-control"
+                                    value="<%= oldInput.designation || '' %>" required>
+                            </div>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div class="form-group">
+                                <label class="form-label">Job Location</label>
+                                <input type="text" name="location" class="form-control"
+                                    value="<%= oldInput.location || '' %>" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Company Name</label>
+                                <input type="text" name="companyName" class="form-control"
+                                    value="<%= oldInput.companyName || '' %>" required>
+                            </div>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div class="form-group">
+                                <label class="form-label">Salary</label>
+                                <input type="text" name="salary" class="form-control"
+                                    value="<%= oldInput.salary || '' %>" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Total Positions</label>
+                                <input type="number" name="positions" class="form-control"
+                                    value="<%= oldInput.positions || '' %>" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Skills Required (Select multiple)</label>
+                            <select name="skills" class="form-control" multiple required style="height: 100px;">
+                                <option value="React" <%=Array.isArray(oldInput.skills) &&
+                                    oldInput.skills.includes('React') ? 'selected' : '' %>>React</option>
+                                <option value="NodeJs" <%=Array.isArray(oldInput.skills) &&
+                                    oldInput.skills.includes('NodeJs') ? 'selected' : '' %>>NodeJs</option>
+                                <option value="Angular" <%=Array.isArray(oldInput.skills) &&
+                                    oldInput.skills.includes('Angular') ? 'selected' : '' %>>Angular</option>
+                                <option value="MongoDB" <%=Array.isArray(oldInput.skills) &&
+                                    oldInput.skills.includes('MongoDB') ? 'selected' : '' %>>MongoDB</option>
+                                <option value="SQL" <%=Array.isArray(oldInput.skills) && oldInput.skills.includes('SQL')
+                                    ? 'selected' : '' %>>SQL</option>
+                            </select>
+                            <small style="color: var(--text-light);">Hold Ctrl/Cmd to select multiple</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Apply By</label>
+                            <input type="date" name="dueDate" class="form-control" value="<%= oldInput.dueDate || '' %>"
+                                required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Post Job</button>
+                    </form>
+        </div>
+    </div>
+
+    <%- include('../partials/footer') %>

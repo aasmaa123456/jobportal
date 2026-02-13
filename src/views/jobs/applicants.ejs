@@ -1,0 +1,53 @@
+<%- include('../partials/header') %>
+
+    <div class="container">
+        <div style="margin: 2rem 0;">
+            <h1>Applicants for <%= job.designation %>
+            </h1>
+            <a href="/jobs/<%= job.id %>" class="btn btn-secondary"
+                style="margin-top: 1rem; display: inline-block;">&larr; Back to Job Details</a>
+        </div>
+
+        <% if (applicants.length===0) { %>
+            <div class="alert alert-danger">No applicants yet.</div>
+            <% } else { %>
+                <div class="card">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="text-align: left; background-color: #f1f5f9;">
+                                <th style="padding: 1rem; border-bottom: 2px solid var(--border-color);">Name</th>
+                                <th style="padding: 1rem; border-bottom: 2px solid var(--border-color);">Email</th>
+                                <th style="padding: 1rem; border-bottom: 2px solid var(--border-color);">Contact</th>
+                                <th style="padding: 1rem; border-bottom: 2px solid var(--border-color);">Resume</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% applicants.forEach(applicant=> { %>
+                                <tr>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">
+                                        <%= applicant.name %>
+                                    </td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">
+                                        <%= applicant.email %>
+                                    </td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">
+                                        <%= applicant.contact %>
+                                    </td>
+                                    <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">
+                                        <% if (applicant.resumePath) { %>
+                                            <a href="<%= applicant.resumePath %>" target="_blank"
+                                                class="btn btn-outline"
+                                                style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">View Resume</a>
+                                            <% } else { %>
+                                                <span style="color: var(--text-light);">No Resume</span>
+                                                <% } %>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+                <% } %>
+    </div>
+
+    <%- include('../partials/footer') %>
